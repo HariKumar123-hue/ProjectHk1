@@ -15,3 +15,4 @@ Feature: Add and remove items, then verify order completion message
       | username                  | password      | firstName | lastName | zipCode |
       | standard_user             | secret_sauce  | John      | Doe      | 12345   |
       | performance_glitch_user   | secret_sauce  | Jane      | Smith    | 67890   |
+      | performance_glitch_user   | secret_sauce  | Jane      | Smith    | 67890   |
