@@ -1,26 +1,36 @@
 plugins {
     id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '5.3.9'
 }
 
-group = 'com.saucedemo'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'net.serenity-bdd:serenity-core:5.3.9'
+    testImplementation 'net.serenity-bdd:serenity-cucumber:5.3.9'
+    testImplementation 'net.serenity-bdd:serenity-junit5:5.3.9'
 
-    implementation 'io.cucumber:cucumber-java:7.18.1'
-    implementation 'io.cucumber:cucumber-junit:7.18.1'
+    testImplementation 'io.cucumber:cucumber-java:7.20.1'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.20.1'
 
-    implementation 'org.seleniumhq.selenium:selenium-java:4.25.0'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.12.2'
+
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.16'
 }
 
 test {
-    useJUnit()
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    finalizedBy 'aggregate'
 }
