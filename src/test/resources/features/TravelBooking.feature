@@ -16,5 +16,6 @@ Feature: Travel booking flow
       | cardMonth   | 12                 |
       | cardYear    | 2028               |
       | nameOnCard  | John Tester        |
+
     Then booking should be confirmed
     And confirmation id should be saved to file

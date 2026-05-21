@@ -30,5 +30,4 @@ public class ReservePage extends PageObject {
     private double parsePrice(String priceText) {
         return Double.parseDouble(priceText.replace("$", "").replace(",", "").trim());
     }
-
 }
